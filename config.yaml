@@ -1,0 +1,125 @@
+# =============================================================================
+# Configuration for the Lung CT Segmentation project.
+#
+# All pipeline hyperparameters live here so experiments are reproducible and
+# so that batch size / image size / epochs / architecture can be scaled to the
+# available hardware without touching source code. Nothing in src/ or
+# scripts/ hard-codes a path or a hyperparameter.
+# =============================================================================
+
+seed: 42
+
+data:
+  images_dir: "data/lung-cancer-vision-v1/images"
+  masks_dir: "data/lung-cancer-vision-v1/masks"
+  image_size: 256          # native resolution of the supplied dataset (256x256)
+  val_fraction: 0.15       # fraction of SUBJECTS assigned to validation
+  test_fraction: 0.15      # fraction of SUBJECTS assigned to test
+  split_level: "subject"   # "subject" if subject IDs are recoverable from filenames, else "image"
+  mask_threshold: 127      # pixel value >= threshold -> foreground (masks are 0/255)
+
+  # Normalization strategy applied to IMAGES ONLY (never to masks).
+  # One of: zscore_dataset | zscore_image | minmax | none
+  # zscore_dataset uses mean/std computed from the TRAINING split only.
+  normalization: "zscore_dataset"
+
+  # Optional CLAHE contrast enhancement (images only, applied after resize).
+  # Off by default so the baseline stays the simplest reproducible pipeline.
+  use_clahe: false
+  clahe_clip_limit: 2.0
+  clahe_tile_grid: 8
+
+model:
+  name: "unet"             # unet | residual_unet | attention_unet
+  in_channels: 1
+  out_channels: 1
+  base_channels: 32        # kept modest for CPU-only smoke testing; raise to 64 on GPU
+  bilinear_upsampling: true
+
+training:
+  # ---- SMOKE TEST defaults (safe for CPU-only / limited-RAM environments) ----
+  smoke_test:
+    epochs: 2
+    batch_size: 4
+    max_train_samples: 64
+    max_val_samples: 16
+    num_workers: 0
+  # ---- FULL TRAINING defaults (intended for a GPU machine) -------------------
+  full:
+    epochs: 10
+    batch_size: 16
+    num_workers: 4
+  learning_rate: 0.0001
+  weight_decay: 0.00001
+  optimizer: "adam"             # adam | adamw | sgd | rmsprop
+  momentum: 0.9                 # used by sgd only
+  lr_scheduler: "reduce_on_plateau"   # none | reduce_on_plateau | cosine | step
+  scheduler_patience: 3         # used by reduce_on_plateau
+  scheduler_step_size: 10       # used by step
+  early_stopping_patience: 10
+  device: "auto"                # "auto" | "cpu" | "cuda"
+  mixed_precision: true         # automatically ignored when no CUDA device is present
+  grad_clip_norm: null          # e.g. 1.0 to enable gradient-norm clipping
+
+loss:
+  name: "bce_dice"        # bce | dice | bce_dice
+  bce_weight: 0.5
+  dice_weight: 0.5
+  dice_smooth: 1.0
+  empty_handling: "smooth"  # smooth | exclude  (see src/losses.py)
+  pos_weight: null          # optional positive-class weight for the BCE term
+
+augmentation:
+  enabled: true
+  horizontal_flip_prob: 0.5
+  # Vertical flip is DISABLED by default and deliberately so: an axial CT slice
+  # has a fixed anterior/posterior orientation, and flipping it vertically
+  # produces anatomically impossible images. Horizontal flip is acceptable
+  # because left/right lung mirroring stays anatomically plausible.
+  vertical_flip_prob: 0.0
+  rotation_degrees: 10
+  translate_fraction: 0.05
+  scale_range: [0.95, 1.05]
+  affine_prob: 0.7
+  brightness_contrast_prob: 0.3
+  brightness_limit: 0.1
+  contrast_limit: 0.1
+  gauss_noise_prob: 0.2         # mild acquisition-noise simulation (image only)
+  gauss_noise_std_range: [0.01, 0.05]
+
+evaluation:
+  threshold: 0.5           # probability threshold for binarizing predictions
+  compute_surface_metrics: true   # HD95 / ASSD (requires scipy)
+
+error_analysis:
+  low_dice_threshold: 0.5       # flag samples below this Dice
+  low_iou_threshold: 0.35       # flag samples below this IoU
+  high_fp_pixel_threshold: 500  # flag samples with more than this many FP pixels
+  high_fn_pixel_threshold: 500  # flag samples with more than this many FN pixels
+  n_worst_to_report: 20
+
+# -----------------------------------------------------------------------------
+# Experiment matrix. Each entry is ONE controlled change from the baseline.
+# Experiment C is defined but is NOT part of the committed smoke-test results:
+# see README "Results" for exactly which experiments were actually run.
+# -----------------------------------------------------------------------------
+experiments:
+  - name: "baseline_unet_no_aug"
+    model: "unet"
+    augmentation: false
+    loss: "bce"
+  - name: "unet_aug_bce_dice"
+    model: "unet"
+    augmentation: true
+    loss: "bce_dice"
+  - name: "attention_unet_aug_bce_dice"
+    model: "attention_unet"
+    augmentation: true
+    loss: "bce_dice"
+    enabled: false          # opt in with: --include-optional
+
+paths:
+  checkpoints_dir: "outputs/checkpoints"
+  figures_dir: "outputs/figures"
+  predictions_dir: "outputs/predictions"
+  metrics_dir: "outputs/metrics"
