@@ -1,0 +1,120 @@
+{
+  "experiment": "unet_aug_bce_dice",
+  "mode": "smoke_test",
+  "label": "smoke_test",
+  "n_images_scored": 60,
+  "tiers": {
+    "success": [
+      {
+        "filename": "train_Subject_17_286.png",
+        "dice": 0.08600337268055647,
+        "iou": 0.044933920704449924,
+        "gt_area_px": 192,
+        "pred_area_px": 994
+      },
+      {
+        "filename": "train_Subject_17_287.png",
+        "dice": 0.0683333333327639,
+        "iou": 0.03537532355448339,
+        "gt_area_px": 209,
+        "pred_area_px": 991
+      },
+      {
+        "filename": "train_Subject_17_283.png",
+        "dice": 0.06735266604240082,
+        "iou": 0.03484995159695208,
+        "gt_area_px": 150,
+        "pred_area_px": 919
+      }
+    ],
+    "average": [
+      {
+        "filename": "train_Subject_15_86.png",
+        "dice": 0.038334434897301164,
+        "iou": 0.019541778975609558,
+        "gt_area_px": 148,
+        "pred_area_px": 1365
+      },
+      {
+        "filename": "train_Subject_15_85.png",
+        "dice": 0.025563909774243884,
+        "iou": 0.012947448590914339,
+        "gt_area_px": 121,
+        "pred_area_px": 1209
+      },
+      {
+        "filename": "train_Subject_14_180.png",
+        "dice": 0.02499999999955357,
+        "iou": 0.012658227847872365,
+        "gt_area_px": 88,
+        "pred_area_px": 472
+      }
+    ],
+    "difficult": [
+      {
+        "filename": "train_Subject_14_179.png",
+        "dice": 0.017605633802506942,
+        "iou": 0.008880994671245453,
+        "gt_area_px": 79,
+        "pred_area_px": 489
+      },
+      {
+        "filename": "train_Subject_14_182.png",
+        "dice": 0.01724137931004756,
+        "iou": 0.008695652173761814,
+        "gt_area_px": 144,
+        "pred_area_px": 436
+      },
+      {
+        "filename": "train_Subject_14_181.png",
+        "dice": 0.01709401709372489,
+        "iou": 0.00862068965502378,
+        "gt_area_px": 108,
+        "pred_area_px": 477
+      }
+    ],
+    "failure": [
+      {
+        "filename": "train_Subject_17_280.png",
+        "dice": 0.0,
+        "iou": 0.0,
+        "gt_area_px": 8,
+        "pred_area_px": 1020
+      },
+      {
+        "filename": "train_Subject_15_90.png",
+        "dice": 0.0,
+        "iou": 0.0,
+        "gt_area_px": 7,
+        "pred_area_px": 1320
+      },
+      {
+        "filename": "train_Subject_15_78.png",
+        "dice": 0.0,
+        "iou": 0.0,
+        "gt_area_px": 26,
+        "pred_area_px": 834
+      }
+    ],
+    "empty_gt": [
+      {
+        "filename": "train_Subject_14_0.png",
+        "dice": 0.0,
+        "gt_area_px": 0,
+        "pred_area_px": 519
+      },
+      {
+        "filename": "train_Subject_14_1.png",
+        "dice": 0.0,
+        "gt_area_px": 0,
+        "pred_area_px": 421
+      },
+      {
+        "filename": "train_Subject_14_10.png",
+        "dice": 0.0,
+        "gt_area_px": 0,
+        "pred_area_px": 729
+      }
+    ]
+  }
+}

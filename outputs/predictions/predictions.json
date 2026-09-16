@@ -1,0 +1,223 @@
+{
+  "checkpoint": "outputs/checkpoints/unet_aug_bce_dice_best.pt",
+  "threshold": 0.5,
+  "n_images": 6,
+  "predictions": [
+    {
+      "input": "data/lung-cancer-vision-v1/images/train_Subject_0_0.png",
+      "source_shape": [
+        256,
+        256
+      ],
+      "height": 128,
+      "width": 128,
+      "total_pixels": 16384,
+      "foreground_pixels": 29,
+      "foreground_percent": 0.177001953125,
+      "bounding_box": {
+        "x_min": 7,
+        "y_min": 45,
+        "x_max": 9,
+        "y_max": 58,
+        "width": 3,
+        "height": 14
+      },
+      "n_components": 1,
+      "mean_foreground_confidence": 0.6385279893875122,
+      "metrics_vs_ground_truth": {
+        "dice": 0.0,
+        "iou": 0.0,
+        "precision": 0.0,
+        "recall": 1.0,
+        "specificity": 0.9982299804681407,
+        "f1": 0.0,
+        "hd95": null,
+        "assd": null,
+        "tp": 0,
+        "fp": 29,
+        "fn": 0
+      },
+      "figure": "outputs/predictions/train_Subject_0_0_panel.png"
+    },
+    {
+      "input": "data/lung-cancer-vision-v1/images/train_Subject_0_1.png",
+      "source_shape": [
+        256,
+        256
+      ],
+      "height": 128,
+      "width": 128,
+      "total_pixels": 16384,
+      "foreground_pixels": 32,
+      "foreground_percent": 0.1953125,
+      "bounding_box": {
+        "x_min": 7,
+        "y_min": 44,
+        "x_max": 9,
+        "y_max": 58,
+        "width": 3,
+        "height": 15
+      },
+      "n_components": 1,
+      "mean_foreground_confidence": 0.637773334980011,
+      "metrics_vs_ground_truth": {
+        "dice": 0.0,
+        "iou": 0.0,
+        "precision": 0.0,
+        "recall": 1.0,
+        "specificity": 0.9980468749993908,
+        "f1": 0.0,
+        "hd95": null,
+        "assd": null,
+        "tp": 0,
+        "fp": 32,
+        "fn": 0
+      },
+      "figure": "outputs/predictions/train_Subject_0_1_panel.png"
+    },
+    {
+      "input": "data/lung-cancer-vision-v1/images/train_Subject_0_10.png",
+      "source_shape": [
+        256,
+        256
+      ],
+      "height": 128,
+      "width": 128,
+      "total_pixels": 16384,
+      "foreground_pixels": 36,
+      "foreground_percent": 0.2197265625,
+      "bounding_box": {
+        "x_min": 7,
+        "y_min": 44,
+        "x_max": 9,
+        "y_max": 59,
+        "width": 3,
+        "height": 16
+      },
+      "n_components": 1,
+      "mean_foreground_confidence": 0.6541953682899475,
+      "metrics_vs_ground_truth": {
+        "dice": 0.0,
+        "iou": 0.0,
+        "precision": 0.0,
+        "recall": 1.0,
+        "specificity": 0.9978027343743909,
+        "f1": 0.0,
+        "hd95": null,
+        "assd": null,
+        "tp": 0,
+        "fp": 36,
+        "fn": 0
+      },
+      "figure": "outputs/predictions/train_Subject_0_10_panel.png"
+    },
+    {
+      "input": "data/lung-cancer-vision-v1/images/train_Subject_0_100.png",
+      "source_shape": [
+        256,
+        256
+      ],
+      "height": 128,
+      "width": 128,
+      "total_pixels": 16384,
+      "foreground_pixels": 47,
+      "foreground_percent": 0.286865234375,
+      "bounding_box": {
+        "x_min": 7,
+        "y_min": 35,
+        "x_max": 14,
+        "y_max": 56,
+        "width": 8,
+        "height": 22
+      },
+      "n_components": 2,
+      "mean_foreground_confidence": 0.6911667585372925,
+      "metrics_vs_ground_truth": {
+        "dice": 0.0,
+        "iou": 0.0,
+        "precision": 0.0,
+        "recall": 1.0,
+        "specificity": 0.9971313476556414,
+        "f1": 0.0,
+        "hd95": null,
+        "assd": null,
+        "tp": 0,
+        "fp": 47,
+        "fn": 0
+      },
+      "figure": "outputs/predictions/train_Subject_0_100_panel.png"
+    },
+    {
+      "input": "data/lung-cancer-vision-v1/images/train_Subject_0_101.png",
+      "source_shape": [
+        256,
+        256
+      ],
+      "height": 128,
+      "width": 128,
+      "total_pixels": 16384,
+      "foreground_pixels": 51,
+      "foreground_percent": 0.311279296875,
+      "bounding_box": {
+        "x_min": 7,
+        "y_min": 34,
+        "x_max": 14,
+        "y_max": 57,
+        "width": 8,
+        "height": 24
+      },
+      "n_components": 2,
+      "mean_foreground_confidence": 0.7042310833930969,
+      "metrics_vs_ground_truth": {
+        "dice": 0.0,
+        "iou": 0.0,
+        "precision": 0.0,
+        "recall": 1.0,
+        "specificity": 0.9968872070306415,
+        "f1": 0.0,
+        "hd95": null,
+        "assd": null,
+        "tp": 0,
+        "fp": 51,
+        "fn": 0
+      },
+      "figure": "outputs/predictions/train_Subject_0_101_panel.png"
+    },
+    {
+      "input": "data/lung-cancer-vision-v1/images/train_Subject_0_304.png",
+      "source_shape": [
+        256,
+        256
+      ],
+      "height": 128,
+      "width": 128,
+      "total_pixels": 16384,
+      "foreground_pixels": 217,
+      "foreground_percent": 1.324462890625,
+      "bounding_box": {
+        "x_min": 1,
+        "y_min": 22,
+        "x_max": 81,
+        "y_max": 88,
+        "width": 81,
+        "height": 67
+      },
+      "n_components": 8,
+      "mean_foreground_confidence": 0.7270421981811523,
+      "metrics_vs_ground_truth": {
+        "dice": 0.06222222221945679,
+        "iou": 0.03211009174164633,
+        "precision": 0.032258064514642484,
+        "recall": 0.8749999989062499,
+        "specificity": 0.9871763556418006,
+        "f1": 0.06222222221669135,
+        "hd95": 43.26891759142616,
+        "assd": 26.99763562718072,
+        "tp": 7,
+        "fp": 210,
+        "fn": 1
+      },
+      "figure": "outputs/predictions/train_Subject_0_304_panel.png"
+    }
+  ]
+}

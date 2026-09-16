@@ -1,0 +1,122 @@
+{
+  "mode": "smoke_test",
+  "label": "smoke_test",
+  "hardware": {
+    "cuda_available": false,
+    "cpu_count": 12,
+    "torch_version": "2.14.0+cpu"
+  },
+  "config_file": "config.yaml",
+  "data": {
+    "image_size": 256,
+    "n_train_files": 1352,
+    "n_val_files": 296,
+    "n_train_subjects": 43,
+    "n_val_subjects": 9
+  },
+  "model_base_channels": 32,
+  "experiments": [
+    {
+      "experiment_name": "baseline_unet_no_aug",
+      "mode": "smoke_test",
+      "model": "unet",
+      "augmentation": false,
+      "loss": "bce",
+      "optimizer": "adam",
+      "lr_scheduler": "reduce_on_plateau",
+      "mixed_precision": false,
+      "epochs_run": 2,
+      "best_val_dice": 0.006824409411046488,
+      "best_checkpoint": "outputs\\checkpoints\\baseline_unet_no_aug_best.pt",
+      "last_checkpoint": "outputs\\checkpoints\\baseline_unet_no_aug_last.pt",
+      "total_train_time_sec": 74.31796073913574,
+      "n_params": 3349697,
+      "device": "cpu",
+      "history": {
+        "train_loss": [
+          0.5958917029201984,
+          0.5021741352975368
+        ],
+        "val_loss": [
+          0.6605771631002426,
+          0.5261805802583694
+        ],
+        "train_dice": [
+          0.06867092201615133,
+          0.2998568150918789
+        ],
+        "val_dice": [
+          0.006824409411046488,
+          0.0030136727591186198
+        ],
+        "train_iou": [
+          0.03677792474494055,
+          0.18710131765554575
+        ],
+        "val_iou": [
+          0.0034389252009432354,
+          0.0015132138732323434
+        ],
+        "learning_rate": [
+          0.0001,
+          0.0001
+        ]
+      },
+      "normalize_stats": {
+        "mean": 0.1667175573461196,
+        "std": 0.19560276944294186
+      }
+    },
+    {
+      "experiment_name": "unet_aug_bce_dice",
+      "mode": "smoke_test",
+      "model": "unet",
+      "augmentation": true,
+      "loss": "bce_dice",
+      "optimizer": "adam",
+      "lr_scheduler": "reduce_on_plateau",
+      "mixed_precision": false,
+      "epochs_run": 2,
+      "best_val_dice": 0.006076165829264301,
+      "best_checkpoint": "outputs\\checkpoints\\unet_aug_bce_dice_best.pt",
+      "last_checkpoint": "outputs\\checkpoints\\unet_aug_bce_dice_last.pt",
+      "total_train_time_sec": 95.04690909385681,
+      "n_params": 3349697,
+      "device": "cpu",
+      "history": {
+        "train_loss": [
+          0.7931295707821846,
+          0.7458209507167339
+        ],
+        "val_loss": [
+          0.8279172778129578,
+          0.7605477869510651
+        ],
+        "train_dice": [
+          0.06171348530445626,
+          0.20505627487948144
+        ],
+        "val_dice": [
+          0.006076165829264301,
+          0.004266306843546772
+        ],
+        "train_iou": [
+          0.03267845228712816,
+          0.1190210270371724
+        ],
+        "val_iou": [
+          0.003059499768227137,
+          0.00214412344501465
+        ],
+        "learning_rate": [
+          0.0001,
+          0.0001
+        ]
+      },
+      "normalize_stats": {
+        "mean": 0.1667175573461196,
+        "std": 0.19560276944294186
+      }
+    }
+  ]
+}

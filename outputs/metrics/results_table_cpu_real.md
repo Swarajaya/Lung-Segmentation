@@ -1,0 +1,8 @@
+# Results table (cpu_real)
+
+All numbers below were computed by `scripts/evaluate.py` on the held-out test split. `dice_all` includes empty-ground-truth slices (which score 1.0 when correctly predicted empty); `dice_positive_only` covers only slices that actually contain foreground and is the figure that measures segmentation quality. HD95/ASSD are in pixels and are averaged over the cases where they are defined.
+
+| Experiment | Model | Aug | Loss | Dice (all) | Dice (GT+) | IoU (GT+) | Precision | Recall | Specificity | HD95 px | ASSD px | Note |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| baseline_unet_no_aug | unet | False | bce | 0.1957 | 0.0517 | 0.0333 | 0.9787 | 0.191 | 1.0 | 7.321 | 4.515 | Real-data training run on the COMPLETE training split (1,352 images / 43 subjects) using config/cpu_real.yaml: 128x128 input, base_channels=16, 10 epochs, CPU only. Capacity-reduced relative to config.yaml (256x256, base_channels=32, 60 epochs), so these are a genuine but LOWER-BOUND result, not the architecture's achievable performance. Trained in resumed chunks because of a 300s per-command limit; resume-from-checkpoint was used and is covered by tests. |
+| unet_aug_bce_dice | unet | True | bce_dice | 0.2641 | 0.2351 | 0.1614 | 0.5098 | 0.3931 | 0.9973 | 47.903 | 23.53 | Real-data training run on the COMPLETE training split (1,352 images / 43 subjects) using config/cpu_real.yaml: 128x128 input, base_channels=16, 10 epochs, CPU only. Capacity-reduced relative to config.yaml (256x256, base_channels=32, 60 epochs), so these are a genuine but LOWER-BOUND result, not the architecture's achievable performance. Trained in resumed chunks because of a 300s per-command limit; resume-from-checkpoint was used and is covered by tests. |

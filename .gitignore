@@ -1,0 +1,19 @@
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.DS_Store
+
+# Large / generated artifacts — regenerate via scripts, don't commit
+outputs/checkpoints/*.pt
+data/lung-cancer-vision-v1/
+!data/lung-cancer-vision-v1/.gitkeep
+
+# Keep the small generated report/figure/metric files out of VCS bloat if desired
+# (comment out if you want to version them)
+# outputs/figures/*.png

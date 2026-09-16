@@ -1,0 +1,3 @@
+experiment,model,augmentation,loss,dice_all,iou_all,dice_positive_only,iou_positive_only,precision,recall,specificity,f1,foreground_coverage,hd95_px,assd_px,n_hd95_defined,dice_empty_gt_only,n_all,n_positive_gt,n_empty_gt,tp,tn,fp,fn,note
+baseline_unet_no_aug,unet,False,bce,0.0065,0.0033,0.0094,0.0047,0.0033,0.4146,0.9648,0.0065,0.4146,165.589,90.824,22,0.0,32,22,10,295,2021892,73838,1127,"SMOKE TEST (tiny data subset, 2 epochs) — proves the pipeline runs end-to-end. NOT a measure of model quality."
+unet_aug_bce_dice,unet,True,bce_dice,0.007,0.0035,0.0101,0.0051,0.0042,0.3396,0.9905,0.007,0.3396,155.218,83.599,22,0.0,32,22,10,67,2075830,19900,1355,"SMOKE TEST (tiny data subset, 2 epochs) — proves the pipeline runs end-to-end. NOT a measure of model quality."
